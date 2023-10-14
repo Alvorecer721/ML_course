@@ -49,8 +49,8 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
         # ***************************************************
         # INSERT YOUR CODE HERE
         # TODO: compute gradient and loss
-        loss = compute_loss(y, tx, w)
         grad = compute_gradient(y, tx, w)
+        loss = compute_loss(y, tx, w)
         # ***************************************************
 
         # ***************************************************
