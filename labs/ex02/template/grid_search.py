@@ -27,6 +27,7 @@ def get_best_parameters(w0, w1, losses):
 #       here when it is done.
 # ***************************************************
 
+
 def grid_search(y, tx, grid_w0, grid_w1):
     """Algorithm for grid search.
 
@@ -51,6 +52,7 @@ def grid_search(y, tx, grid_w0, grid_w1):
             losses[idx0, idx1] = compute_loss(y, tx, np.array([w0, w1]))
 
     return losses
+
 
 if "__main__" == __name__:
     grid_w0, grid_w1 = generate_w(num_intervals=10)

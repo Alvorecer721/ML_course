@@ -27,5 +27,5 @@ def least_squares(y, tx):
     optimal_weight = np.linalg.solve(A, b)
 
     e = y - tx.dot(optimal_weight)
-    mse = (e.T.dot(e)) / (2*len(y))
+    mse = (e.T.dot(e)) / (2 * len(y))
     return optimal_weight, mse

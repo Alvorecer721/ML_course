@@ -19,6 +19,7 @@
   },
   {
    "cell_type": "markdown",
+   "execution_count": null,
    "metadata": {
     "id": "TYyZPqnPmhYC"
    },
@@ -29,8 +30,20 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 2,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2022-10-20T20:24:26.423626Z",
+     "iopub.status.busy": "2022-10-20T20:24:26.423437Z",
+     "iopub.status.idle": "2022-10-20T20:24:26.440936Z",
+     "shell.execute_reply": "2022-10-20T20:24:26.440230Z"
+    }
+   },
+=======
+   "execution_count": null,
    "metadata": {},
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "outputs": [],
    "source": [
     "from numpy.random import rand, randn"
@@ -38,8 +51,20 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 3,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2022-10-20T20:24:26.444023Z",
+     "iopub.status.busy": "2022-10-20T20:24:26.443804Z",
+     "iopub.status.idle": "2022-10-20T20:24:26.461776Z",
+     "shell.execute_reply": "2022-10-20T20:24:26.461091Z"
+    }
+   },
+=======
+   "execution_count": null,
    "metadata": {},
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "outputs": [],
    "source": [
     "n, d, k = 100, 2, 2"
@@ -47,6 +72,7 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 4,
    "metadata": {},
    "outputs": [
@@ -106,13 +132,20 @@
     }
    ],
    "source": [
-    "[np.diag(rand(d))] * 2"
+    "[np.diag(rand(d))]*2"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 7,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2022-10-20T20:24:26.464754Z",
+     "iopub.status.busy": "2022-10-20T20:24:26.464495Z",
+     "iopub.status.idle": "2022-10-20T20:24:26.484105Z",
+     "shell.execute_reply": "2022-10-20T20:24:26.483496Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -125,6 +158,11 @@
      ]
     }
    ],
+=======
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "source": [
     "np.random.seed(20)\n",
     "X = rand(n, d)\n",
@@ -142,6 +180,7 @@
   },
   {
    "cell_type": "markdown",
+   "execution_count": null,
    "metadata": {},
    "source": [
     "## Computing the probability density"
@@ -155,23 +194,37 @@
    "source": [
     "def compute_p(X, mean, sigma):\n",
     "    \"\"\"\n",
-    "    Implement\n",
+    "    Compute the probability of each data point in X under a Gaussian distribution\n",
+    "\n",
+    "    Args:\n",
+    "        X: (n, d) numpy array, where each row corresponds to a data point\n",
+    "        mean: (d, ) numpy array, the mean of the Gaussian distribution\n",
+    "        sigma: (d, d) numpy array, the covariance matrix of the Gaussian distribution\n",
+    "\n",
+    "    Returns:\n",
+    "        p: (n, ) numpy array, the probability of each data point\n",
+    "\n",
+    "    >>> compute_p(np.array([[0, 0], [1, 1]]), np.array([0, 0]), np.eye(2))\n",
+    "    array([0.15915494, 0.05854983])\n",
     "    \"\"\"\n",
     "    # ***************************************************\n",
     "    # INSERT YOUR CODE HERE\n",
     "    # ***************************************************\n",
-    "    normalisation_constant = 1 / (\n",
-    "        np.power(2 * np.pi, d / 2) * np.sqrt(np.linalg.det(sigma))\n",
-    "    )\n",
+<<<<<<< HEAD
+    "    normalisation_constant = 1 / (np.power(2 * np.pi, d / 2) * np.sqrt(np.linalg.det(sigma)))\n",
     "\n",
     "    # Compute the exponential term\n",
     "    difference = X - mean\n",
-    "\n",
-    "    exp_term = np.exp(\n",
-    "        -0.5 * np.sum(difference @ np.linalg.inv(sigma) * difference, axis=-1)\n",
-    "    )\n",
+    "    \n",
+    "    exp_term = np.exp(-0.5 * np.sum(difference @ np.linalg.inv(sigma) * difference, axis=-1))\n",
     "\n",
     "    return normalisation_constant * exp_term"
+=======
+    "    raise NotImplementedError\n",
+    "\n",
+    "\n",
+    "test(compute_p)"
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    ]
   },
   {
@@ -189,25 +242,19 @@
     "    # ***************************************************\n",
     "    n, k = X.shape\n",
     "\n",
-    "    normalisation_constant = 1 / (\n",
-    "        np.power(2 * np.pi, d / 2) * np.sqrt(np.linalg.det(sigmas))\n",
-    "    )\n",
+    "    normalisation_constant = 1 / (np.power(2 * np.pi, d / 2) * np.sqrt(np.linalg.det(sigmas)))\n",
     "\n",
     "    # Compute the exponential term\n",
     "    diff = X[:, np.newaxis] - np.array(means)\n",
-    "\n",
+    "    \n",
     "    # Compute the inverse of sigmas\n",
     "    sigma_inv = np.linalg.inv(sigmas)\n",
     "\n",
     "    # Compute the exponential term\n",
-    "    quadratic_form = (\n",
-    "        np.sum((diff[:, :, np.newaxis] @ sigma_inv * diff[:, :, np.newaxis]), axis=-1)\n",
-    "        .reshape(n, k)\n",
-    "        .T\n",
-    "    )\n",
+    "    quadratic_form = np.sum((diff[:,:,np.newaxis] @ sigma_inv * diff[:,:,np.newaxis]), axis=-1).reshape(n, k).T\n",
     "\n",
     "    exp_term = np.exp(-0.5 * quadratic_form)\n",
-    "\n",
+    "    \n",
     "    return normalisation_constant[:, np.newaxis] * exp_term"
    ]
   },
@@ -297,6 +344,17 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {
+    "id": "VsIOpA8QmhYI"
+   },
+   "source": [
+    "Solution\n",
+    "==="
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": null,
    "metadata": {},
@@ -304,24 +362,41 @@
    "source": [
     "def compute_log_p(X, mean, sigma):\n",
     "    \"\"\"\n",
-    "    Implement\n",
+    "    Compute the log probability of each data point in X under a Gaussian distribution\n",
+    "\n",
+    "    Args:\n",
+    "        X: (n, d) numpy array, where each row corresponds to a data point\n",
+    "        mean: (d, ) numpy array, the mean of the Gaussian distribution\n",
+    "        sigma: (d, d) numpy array, the covariance matrix of the Gaussian distribution\n",
+    "\n",
+    "    Returns:\n",
+    "        log_p: (n, ) numpy array, the log probability of each data point\n",
+    "\n",
+    "    >>> compute_log_p(np.array([[0, 0], [1, 1]]), np.array([0, 0]), np.eye(2))\n",
+    "    array([-1.83787707, -2.83787707])\n",
     "    \"\"\"\n",
     "    # ***************************************************\n",
     "    # INSERT YOUR CODE HERE\n",
     "    # ***************************************************\n",
+<<<<<<< HEAD
     "\n",
     "    d = X.shape[1]\n",
     "\n",
-    "    log_coeff_term = -0.5 * np.log(np.linalg.det(sigma)) - (d / 2) * np.log(2 * np.pi)\n",
-    "    log_exp_term = -0.5 * np.sum(\n",
-    "        (X - mean) @ np.linalg.inv(sigma) * (X - mean), axis=-1\n",
-    "    )\n",
+    "    log_coeff_term = -0.5 * np.log(np.linalg.det(sigma)) - (d/2) * np.log(2 * np.pi)\n",
+    "    log_exp_term = -0.5 * np.sum((X - mean) @ np.linalg.inv(sigma) * (X - mean), axis=-1)\n",
     "\n",
     "    return log_exp_term + log_coeff_term"
+=======
+    "    raise NotImplementedError\n",
+    "\n",
+    "\n",
+    "test(compute_log_p)"
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    ]
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 263,
    "metadata": {},
    "outputs": [],
@@ -339,19 +414,28 @@
     "\n",
     "    diff = X[:, np.newaxis] - np.array(means)\n",
     "\n",
-    "    log_coeff_term = -0.5 * np.log(np.linalg.det(sigmas)) - (d / 2) * np.log(2 * np.pi)\n",
+    "    log_coeff_term = -0.5 * np.log(np.linalg.det(sigmas)) - (d/2) * np.log(2 * np.pi)\n",
     "\n",
-    "    log_exp_term = (\n",
-    "        -0.5 * np.einsum(\"ijk,jkl,ijk->ij\", diff, np.linalg.inv(sigmas), diff).T\n",
-    "    )\n",
+    "    log_exp_term = -0.5 * np.einsum('ijk,jkl,ijk->ij', diff, np.linalg.inv(sigmas), diff).T\n",
     "\n",
-    "    return log_coeff_term[:, np.newaxis] + log_exp_term"
+    "    return log_coeff_term[:, np.newaxis] + log_exp_term "
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 264,
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2022-10-20T20:24:26.507393Z",
+     "iopub.status.busy": "2022-10-20T20:24:26.507172Z",
+     "iopub.status.idle": "2022-10-20T20:24:26.524997Z",
+     "shell.execute_reply": "2022-10-20T20:24:26.524215Z"
+    }
+   },
+=======
+   "execution_count": null,
    "metadata": {},
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "outputs": [],
    "source": [
     "log_ps = [\n",
@@ -361,8 +445,16 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 265,
-   "metadata": {},
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2022-10-20T20:24:26.528004Z",
+     "iopub.status.busy": "2022-10-20T20:24:26.527804Z",
+     "iopub.status.idle": "2022-10-20T20:24:26.545859Z",
+     "shell.execute_reply": "2022-10-20T20:24:26.545266Z"
+    }
+   },
    "outputs": [
     {
      "name": "stdout",
@@ -374,6 +466,11 @@
      ]
     }
    ],
+=======
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "source": [
     "assignments = np.argmax(log_ps, axis=0)\n",
     "print(assignments)"
@@ -381,6 +478,7 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 266,
    "metadata": {
     "execution": {
@@ -404,6 +502,11 @@
      "output_type": "display_data"
     }
    ],
+=======
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "source": [
     "colors = np.array([\"red\", \"green\"])[assignments]\n",
     "plt.scatter(X[:, 0], X[:, 1], c=colors, s=100)\n",
@@ -413,6 +516,7 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 267,
    "metadata": {},
    "outputs": [
@@ -459,6 +563,8 @@
   },
   {
    "cell_type": "code",
+=======
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "execution_count": null,
    "metadata": {},
    "outputs": [],
@@ -467,13 +573,23 @@
  ],
  "metadata": {
   "kernelspec": {
+<<<<<<< HEAD
    "display_name": "ML-Related",
+=======
+   "display_name": "modern_nlp",
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "language": "python",
    "name": "ml-related"
   },
   "language_info": {
    "name": "python",
+<<<<<<< HEAD
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
    "version": "3.9.12"
+=======
+   "version": "3.7.16"
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
   }
  },
  "nbformat": 4,

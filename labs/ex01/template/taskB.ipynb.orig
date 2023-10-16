@@ -80,6 +80,8 @@
    ]
   },
   {
+<<<<<<< HEAD
+=======
    "cell_type": "code",
    "execution_count": null,
    "metadata": {
@@ -130,6 +132,7 @@
    "source": []
   },
   {
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
    "cell_type": "markdown",
    "execution_count": null,
    "metadata": {},
@@ -284,9 +287,7 @@
     "    # TODO: implement an optimized solution\n",
     "    # ***************************************************\n",
     "    rows, cols = np.indices((P.shape[0], Q.shape[0]))\n",
-    "    return np.sqrt(np.sum((P[rows.ravel()] - Q[cols.ravel()]) ** 2, axis=1)).reshape(\n",
-    "        1, -1\n",
-    "    )\n",
+    "    return np.sqrt(np.sum((P[rows.ravel()]  - Q[cols.ravel()])**2,axis=1)).reshape(1,-1)\n",
     "\n",
     "\n",
     "test(with_indices)"
@@ -318,7 +319,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 13,
    "metadata": {
     "execution": {
      "iopub.execute_input": "2022-10-20T20:24:05.049252Z",
@@ -359,7 +360,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 14,
    "metadata": {
     "execution": {
      "iopub.execute_input": "2022-10-20T20:24:05.166142Z",
@@ -397,33 +398,6 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "execution": {
-     "iopub.execute_input": "2022-10-20T20:24:05.189406Z",
-     "iopub.status.busy": "2022-10-20T20:24:05.189070Z",
-     "iopub.status.idle": "2022-10-20T20:24:23.553170Z",
-     "shell.execute_reply": "2022-10-20T20:24:23.552472Z"
-    }
-   },
-   "outputs": [],
-   "source": [
-    "methods = [\n",
-    "    naive,\n",
-    "    naive_2,  # This is another possible solution. Feel free to comment it out if you have only one solution.\n",
-    "    with_indices,\n",
-    "    with_indices_2,  # This is another possible solution. Feel free to comment it out if you have only one solution.\n",
-    "    scipy_version,\n",
-    "    tensor_broadcasting,\n",
-    "]\n",
-    "timers = []\n",
-    "for f in methods:\n",
-    "    r = %timeit -o f(P_big, Q_big)\n",
-    "    timers.append(r)"
-   ]
-  },
-  {
-   "cell_type": "code",
    "execution_count": 15,
    "metadata": {
     "execution": {
@@ -446,7 +420,14 @@
    ],
    "source": [
     "methods = [\n",
+<<<<<<< HEAD
     "    with_indices,\n",
+=======
+    "    naive,\n",
+    "    naive_2,  # This is another possible solution. Feel free to comment it out if you have only one solution.\n",
+    "    with_indices,\n",
+    "    with_indices_2,  # This is another possible solution. Feel free to comment it out if you have only one solution.\n",
+>>>>>>> dccdda74213786ac6a582d43bd56836b1428aab5
     "    scipy_version,\n",
     "    tensor_broadcasting,\n",
     "]\n",
