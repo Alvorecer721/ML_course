@@ -25,6 +25,6 @@ def build_poly(x, degree):
     # by applying the polynomial basis to the input data
     poly = np.ones((len(x), degree + 1))
     for i in range(1, degree + 1):
-        poly[:, i] = x**i
+        poly[:, i] = x ** i
     return poly
     # ***************************************************
